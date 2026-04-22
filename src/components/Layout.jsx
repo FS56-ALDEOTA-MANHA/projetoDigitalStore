@@ -1,10 +1,12 @@
+import Footer from "./Footer"
+import Header from "./Header"
 
 const Layout = () => {
   return (
     <div>
-      <h1>Header</h1>
+      <Header/>
         <h1>Children</h1>
-      <h1>Footer</h1>
+      <Footer/>
     </div>
   )
 }
