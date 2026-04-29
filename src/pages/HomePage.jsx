@@ -1,8 +1,17 @@
+import Section from "../components/Section"
 
 const HomePage = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Section>
+        <div>cards promo</div>
+      </Section>
+      <Section textCenter>
+        <div>categorias</div>
+      </Section>
+      <Section title="produtos em alta" link >
+        <div>lista de produto</div>
+      </Section>
     </div>
   )
 }

@@ -9,13 +9,13 @@ const Layout = () => {
   return (
     <div>
       <Header/>
-       <BrowserRouter/>
-        <Routes/>
+       <BrowserRouter>
+        <Routes>
          <Route path="/" element={<HomePage/>}/>
-         <Route path="/produto" element={<ProductListenPagen/>}/>
+         <Route path="/produtos" element={<ProductListenPagen/>}/>
          <Route path="/produto/:id" element={<ProductViewPage/>}/>
-        <Routes/>
-       <BrowserRouter/>   
+        </Routes>
+       </BrowserRouter>   
       <Footer/>
     </div>
   )
