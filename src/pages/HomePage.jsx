@@ -9,7 +9,7 @@ const HomePage = () => {
       <Section textCenter>
         <div>categorias</div>
       </Section>
-      <Section title="produtos em alta" link >
+      <Section title="Produtos em Alta" link >
         <div>lista de produto</div>
       </Section>
     </div>
