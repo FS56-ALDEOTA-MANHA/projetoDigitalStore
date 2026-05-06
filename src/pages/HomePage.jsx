@@ -4,13 +4,13 @@ const HomePage = () => {
   return (
     <div>
       <Section>
-        <div>Cards Promo</div>
+        <div>cards promo</div>
       </Section>
       <Section textCenter>
-        <div>Categorias</div>
+        <div>categorias</div>
       </Section>
-      <Section title="Produtos em Alta" link>
-        <div>Lista de produtos</div>
+      <Section title="Produtos em Alta" link >
+        <div>lista de produto</div>
       </Section>
     </div>
   )
