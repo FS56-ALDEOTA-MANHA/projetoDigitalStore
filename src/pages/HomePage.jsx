@@ -1,13 +1,14 @@
+import CategoryList from "../components/CategoryList.jsx"
 import Section from "../components/Section"
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="bg-(--bg-page)">
       <Section>
         <div>cards promo</div>
       </Section>
       <Section textCenter>
-        <div>categorias</div>
+        <CategoryList/>
       </Section>
       <Section title="Produtos em Alta" link >
         <div>lista de produto</div>
