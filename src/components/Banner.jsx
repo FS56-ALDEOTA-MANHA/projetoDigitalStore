@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import Button from "./Button"
 import chama from "../assets/Chama.png"
 import tenisCapa from "../assets/TenisCapa.svg"
 import ornamento from "../assets/Ornamento.svg"
 
 const Banner = () => {
+  const navigate = useNavigate()
   return (
-    <section className="bg-[#F5F5F5] w-full min-h-[500px] flex items-center justify-center gap-20 px-16 py-13 absolute">
+    <section className="bg-[#F5F5F5] w-full  flex items-center justify-center gap-20 px-16 py-13 relative">
       {/* LADO ESQUERDO */}
-      <div className="max-w-[420px] z-10">
+      <div className="max-w-105 z-10">
         <h2 className="text-[#F6AA1C] text-sm font-bold mb-5 tracking-wide">
           Melhores ofertas personalizadas
         </h2>
 
-        <h1 className="text-[50px] leading-[65px] font-extrabold text-[#1F1F1F] flex items-center gap-3 mb-6">
+        <h1 className="text-[50px] leading-16.25 font-extrabold text-[#1F1F1F] flex items-center gap-3 mb-6">
           <span className="flex flex-col">
             <span>Queima de</span>
             <span className="whitespace-nowrap">estoque Nike</span>
@@ -31,7 +32,7 @@ const Banner = () => {
           do tempor laboris eiusmod irure consectetur.
         </p>
 
-        <Button as={Link} to="/produtos" texto="Ver ofertas">
+        <Button onClick={()=> navigate("/produtos")} texto="Ver ofertas">
         </Button>
       </div>
 
