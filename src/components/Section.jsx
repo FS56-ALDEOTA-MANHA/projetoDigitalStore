@@ -4,7 +4,7 @@ import seta from "../assets/seta.svg"
 const Section = ({title="Coleções em Destaque", children, link, textCenter}) => {
   return (
     <>
-      <section className="pb-30">
+      <section className="pt-9.5 pb-30 px-25">
         <div className="flex justify-between">
           <h1 className={`${textCenter && "m-auto"} text-2xl font-bold text-[#474747] pb-5`}>{title}</h1> 
 
