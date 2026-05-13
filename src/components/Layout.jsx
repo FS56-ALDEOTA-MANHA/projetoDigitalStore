@@ -8,18 +8,16 @@ import NotFound from "../pages/NotFound"
 
 const Layout = () => {
   return (
-    <div>
-      <Header/>
-       <BrowserRouter>
-        <Routes>
-         <Route path="/" element={<HomePage/>}/>
-         <Route path="/produtos" element={<ProductListingPage/>}/>
-         <Route path="/produto/:id" element={<ProductViewPage/>}/>
-         <Route path="*" element={<NotFound/>} />
-        </Routes>
-       </BrowserRouter>   
-      <Footer/>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/produtos" element={<ProductListingPage />} />
+        <Route path="/produto/:id" element={<ProductViewPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   )
 }
 
