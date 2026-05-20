@@ -3,11 +3,11 @@ import Jordan from "../assets/Jordan.svg";
 import Bola from "../assets/Bola.svg";
 import button from "./Button";
 
-function hero() {
+function Hero() {
   const navigate = useNavigate();
 
-  function verOferta() {
-    navigate("/Produtos");
+  function irParaProduto() {
+    navigate("/produto");
   }
 
   return (
@@ -23,8 +23,15 @@ function hero() {
       <div className="max-w-[500px]">
         <p className="text-pink-600 font-bold">Oferta Especial</p>
         <h1 className="text-5xl fon mb-5">Air Jordan Ediçao de Colecionador</h1>
-        <p className="text-gray-500 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-        <button onClick={irParaProduto} className="bg-pink-600 text-white px-8 py-3 rounded">Ver Oferta</button>
+        <p className="text-gray-500 mb-6">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit
+        </p>
+        <button
+          onClick={irParaProduto}
+          className="bg-pink-600 text-white px-8 py-3 rounded"
+        >
+          Ver Oferta
+        </button>
       </div>
     </section>
   );

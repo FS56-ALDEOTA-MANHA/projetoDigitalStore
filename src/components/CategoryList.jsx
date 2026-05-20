@@ -33,8 +33,8 @@ const CategoryList = () => {
   ]
   return (
     <div className="flex justify-center gap-12">
-      {categorias.map((categoria)=> (
-        <div className="flex flex-col justify-center items-center">
+      {categorias.map((categoria, index)=> (
+        <div key={index} className="flex flex-col justify-center items-center">
           <div className={`bg-white p-5 rounded-full`}>
             <img className="" src={categoria.img} alt={categoria.descricao}/>
           </div>
