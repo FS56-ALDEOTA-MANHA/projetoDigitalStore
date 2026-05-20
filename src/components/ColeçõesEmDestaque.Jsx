@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom";
 
 import CamisetaPromo from "../assets/CamisetaPromo";
 import TenisPromo from "../assets/TenisPromo";
