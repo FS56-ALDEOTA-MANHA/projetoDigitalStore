@@ -1,40 +1,45 @@
-const ProductCard = ({imagem, nome, preco, precoDesconto,}) => (
-    <div className="w-[292px]">
+
+const ProductCard = ({produto, key}) => {
+  console.log("Produto do ProductCard", produto)
+  return (
+    <div key={key} className="w-73">
       {/* Área da imagem */}
-      <div className="w-[292px] h-[321px] bg-white rounded-md flex items-center justify-center overflow-hidden">
+      <div className="w-full h-80.25 bg-white rounded-md flex items-center justify-center pr-4.5 shadow-xl shadow-[#6962620D]">
         <img
-          src={imagem}
-          alt={nome}
-          className="w-full h-full object-cover"
+          src={produto.image}
+          alt={produto.name}
+          className="w-full"
         />
       </div>
 
       {/* Nome do produto */}
-      <h3 className="mt-3 text-base text-[#474747] font-normal">
-        {name}
+      <h2 className="mt-4.5 text-xs text-(--light-gray) font-bold">Tênis</h2>
+      <h3 className=" text-2xl text-[#474747] font-normal">
+        {produto.name}
       </h3>
 
       {/* Área de preços */}
       <div className="flex items-center gap-2 mt-1">
         {/* Se existir desconto */}
-        {precoDesconto ? (
+        {produto.priceDiscount !== produto.price ? (
           <>
             <span className="text-[#8F8F8F] text-2xl line-through">
-              ${preco}
+              ${produto.price}
             </span>
 
             <span className="text-[#1F1F1F] text-2xl font-bold">
-              ${precoDesconto}
+            ${produto.priceDiscount}
             </span>
           </>
         ) : (
           /* Se NÃO existir desconto */
           <span className="text-[#1F1F1F] text-2xl font-bold">
-            ${preco}
+            ${produto.price}
           </span>
         )}
       </div>
     </div>
-  )
+    )
+}
 
 export default ProductCard
