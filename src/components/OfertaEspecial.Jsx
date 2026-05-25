@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Jordan from "../assets/Jordan.svg";
 import Bola from "../assets/Bola.svg";
-import button from "./Button";
+import Button from "./Button";
 
 function Hero() {
   const navigate = useNavigate();
