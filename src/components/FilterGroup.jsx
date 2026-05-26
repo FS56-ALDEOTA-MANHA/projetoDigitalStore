@@ -2,12 +2,10 @@ const FilterGroup = ({ title, inputType, options }) => {
   return (
     <div className="mb-6">
 
-      {/* Título */}
       <h3 className="text-[14px] text-(--dark-gray-2) font-bold mb-3">
         {title}
       </h3>
-
-      {/* Opções */}
+     
       <div className="flex flex-col gap-2">
 
         {options.map((option, index) => (
