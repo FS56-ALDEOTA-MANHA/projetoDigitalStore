@@ -19,8 +19,6 @@ const ProductCard = ({produto, key}) => {
       <h3 className=" text-2xl text-[#474747] font-normal">
         {produto.name}
       </h3>
-
-      {/* Área de preços */}
       <div className="flex items-center gap-2 mt-1">
         {/* Se existir desconto */}
         {produto.priceDiscount !== produto.price ? (
@@ -34,7 +32,6 @@ const ProductCard = ({produto, key}) => {
             </span>
           </>
         ) : (
-          /* Se NÃO existir desconto */
           <span className="text-[#1F1F1F] text-2xl font-bold">
             ${produto.price}
           </span>
@@ -44,4 +41,4 @@ const ProductCard = ({produto, key}) => {
     )
 }
 
-export default ProductCard
+export default ProductCard;
