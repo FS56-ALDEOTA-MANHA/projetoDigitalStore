@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard.jsx"
 
 const ProductListing = ({produtos}) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+    <div className="grid gap-10 grid-cols-[repeat(auto-fit,minmax(292px,1fr))]">
       {produtos.map((produto)=> (
         <ProductCard key={produto.id} produto={produto}/>
       ))}

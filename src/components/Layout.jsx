@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage"
 import ProductViewPage from "../pages/ProductViewPage"
 import ProductListingPage from "../pages/ProductListingPage"
 import NotFound from "../pages/NotFound"
+import LoginPage from "../pages/LoginPage"
 
 const Layout = () => {
   return (
@@ -12,6 +13,7 @@ const Layout = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/produtos" element={<ProductListingPage />} />
         <Route path="/produto/:id" element={<ProductViewPage />} />
         <Route path="*" element={<NotFound />} />
