@@ -4,6 +4,7 @@ import Banner from "../components/Banner";
 import ColecoesEmDestaque from "../components/ColecoesEmDestaque.jsx";
 import ProductListing from "../components/ProductListing.jsx";
 import {useState, useEffect} from "react";
+import OfertaEspecial from "../components/OfertaEspecial.jsx"
 
 const HomePage = () => {
   const [produtos, setProdutos] = useState([])
@@ -36,6 +37,7 @@ const HomePage = () => {
       <Section title="Produtos em Alta" link>
         <ProductListing produtos={produtos}/>
       </Section>
+      <OfertaEspecial/>
     </div>
   )
 }

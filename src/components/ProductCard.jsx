@@ -1,10 +1,12 @@
 
 const ProductCard = ({produto, key}) => {
   console.log("Produto do ProductCard", produto)
+  const tagPromo = ((produto.price - produto.priceDiscount) * 100 ) /produto.price
   return (
     <div key={key} className="w-73">
       {/* Área da imagem */}
-      <div className="w-full h-80.25 bg-white rounded-md flex items-center justify-center pr-4.5 shadow-xl shadow-[#6962620D]">
+      <div className="relative w-full h-80.25 bg-white rounded-md flex items-center justify-center pr-4.5 shadow-xl shadow-[#6962621b]">
+        {produto.priceDiscount !== produto.price && <span className="bg-[#E7FF86] top-5 left-5 text-nowrap px-4 py-1 rounded-2xl font-bold text-(--dark-gray-2) absolute">{`${parseInt(tagPromo)}% OFF`}</span>}
         <img
           src={produto.image}
           alt={produto.name}
