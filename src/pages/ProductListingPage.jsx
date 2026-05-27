@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 import FilterGroup from "../components/FilterGroup"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import ProductListing from "../components/ProductListing"
 
 const ProductListingPage = () => {
   const [dados, setDados] = useState([])
@@ -15,22 +15,15 @@ const ProductListingPage = () => {
     }
   }
 
-  fetchData()
+  useEffect(()=> {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      fetchData()
+  }, [])
+
 
   return (
     <div className="bg-(--bg-page) min-h-screen p-10">
-      {dados.map((produto) => (
-        <div>
-          {/* <img src="" alt="" /> */}
-          <div>
-            <span>Tênis</span>
-            <h2>{produto.name}</h2>
-            <span>{produto.price}</span>
-            {produto.priceDiscount !== produto.price && <span>{produto.priceDiscount}</span>}
-          </div>
-        </div>
-      ))}
-      <aside className="bg-white w-[308px] p-6 rounded-sm">
+      <aside className="bg-white w-[308px] p-6 rounded-sm fixed top-40">
 
         <h2 className="text-[16px] text-(--dark-gray-2) font-bold">
           Filtrar por
@@ -68,6 +61,9 @@ const ProductListingPage = () => {
         />
 
       </aside>
+      <div className="pl-90">
+      <ProductListing produtos={dados} />
+      </div>
     </div>
   )
 }
