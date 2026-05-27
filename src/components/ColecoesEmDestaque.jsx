@@ -24,7 +24,7 @@ function ColecoesEmDestaque() {
   ]
 
   return (
-    <div className="flex  gap-3 ">
+    <div className="flex gap-3 ">
       {produtosPromo.map((produto, index) => (
         <div key={index} className="relative w-full bg-[#d8e6f7] rounded-sm pt-5 pl-5 flex justify-between">
           <div className="pb-5 md:pb-8">
