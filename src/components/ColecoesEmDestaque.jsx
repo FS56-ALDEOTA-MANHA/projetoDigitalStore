@@ -24,9 +24,9 @@ function ColecoesEmDestaque() {
   ]
 
   return (
-    <div className="flex  gap-3 ">
-      {produtosPromo.map((produto) => (
-        <div className="relative w-full bg-[#d8e6f7] rounded-sm pt-5 pl-5 flex justify-between">
+    <div className="flex gap-3 ">
+      {produtosPromo.map((produto, index) => (
+        <div key={index} className="relative w-full bg-[#d8e6f7] rounded-sm pt-5 pl-5 flex justify-between">
           <div className="pb-5 md:pb-8">
             <span className=" bg-[#e7ff86] rounded-full px-4 py-1 text-xs font-bold">30% OFF</span>
             <h2 className={`w-[67%] mt-2.5 mb-5 text-[32px] font-bold leading-9 text-gray-800`}>{produto.titulo}</h2>
