@@ -6,10 +6,12 @@ import ProductViewPage from "../pages/ProductViewPage"
 import ProductListingPage from "../pages/ProductListingPage"
 import NotFound from "../pages/NotFound"
 import LoginPage from "../pages/LoginPage"
+import { AuthProvider } from "../context/AuthContext"
 
 const Layout = () => {
   return (
     <BrowserRouter>
+    <AuthProvider>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -19,6 +21,7 @@ const Layout = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      </AuthProvider>
     </BrowserRouter>
   )
 }
