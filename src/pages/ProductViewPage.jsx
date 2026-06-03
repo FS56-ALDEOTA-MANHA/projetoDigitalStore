@@ -1,8 +1,10 @@
+import BuyBox from "../components/Buybox"
+import ProductListing from "../components/ProductListing"
 
 const ProductViewPage = () => {
   return (
     <div>
-      <h1>Pagina de Detalhe do Produto</h1>
+      <BuyBox/>
     </div>
   )
 }
