@@ -1,11 +1,25 @@
 import { Link, NavLink, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Logo from "./Logo"
 import buyIcon from "../assets/Buy.svg"
+import { AuthContext } from "../context/AuthContext"
+import Button from "./Button"
 
 const Header = () => {
   const [busca, setBusca] = useState("")
   const navigate = useNavigate()
+  const {user, setUser} = useContext(AuthContext)
+
+  function handleLogout () {
+    console.log("entrou na funcao de logout")
+    setUser("")
+    localStorage.removeItem("usuario")
+  }
+  
+  useEffect(()=> {
+  
+  }, [user])
+
 
   const handleBusca = () => {
     if (busca.trim()) navigate(`/produtos?q=${encodeURIComponent(busca.trim())}`)
@@ -28,10 +42,15 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <div className="flex items-center gap-4">
+     { !user ? (<div className="flex items-center gap-4">
           <Link to="/cadastro" className="text-[16px] text-(--dark-gray-2) underline decoration-(--dark-gray-2) whitespace-nowrap">Cadastre-se</Link>
           <Link to="/login" className="flex items-center justify-center w-28.5 h-10 bg-(--primary) text-white text-[14px] font-bold rounded-sm whitespace-nowrap">Entrar</Link>
-        </div>
+        </div>) : (
+          <div className="flex gap-5 items-center">
+            <span>Olá, {user}</span>
+              <Button color="primary" texto="Sair" onClick={handleLogout} />
+          </div>
+        )}
         <div className="ml-2">
           <img src={buyIcon} alt="carrinho" />
         </div>

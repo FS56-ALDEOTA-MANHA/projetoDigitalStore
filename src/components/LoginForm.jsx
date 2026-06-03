@@ -2,11 +2,13 @@ import { Link, useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
 import Button from "./Button"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AuthContext } from "../context/AuthContext"
 
 const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
+  const {setUser} = useContext(AuthContext)
 
   const navigate = useNavigate()
   async function handleLogin (e) {
@@ -19,6 +21,7 @@ const LoginForm = () => {
       for (let i = 0; i < dados.length; i++) {
         if (dados[i].email === email && dados[i].senha === senha) {
           localStorage.setItem("usuario", dados[i].email)
+          setUser(dados[i].email)
           navigate("/")
         }
       }
