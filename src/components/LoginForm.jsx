@@ -11,14 +11,17 @@ const LoginForm = () => {
   const navigate = useNavigate()
   async function handleLogin (e) {
     e.preventDefault()
+    console.log(email, senha)
       try {
         const response = await fetch("http://localhost:3000/usuarios")
         const dados = await response.json()
-        
-        if (dados.email === email && dados.senha === senha) {
-          localStorage.setItem("usuario", response.email)
+        console.log(dados)
+      for (let i = 0; i < dados.length; i++) {
+        if (dados[i].email === email && dados[i].senha === senha) {
+          localStorage.setItem("usuario", dados[i].email)
           navigate("/")
         }
+      }
       } catch (error) {
         console.error("Erro na requisição", error)
       }
@@ -36,7 +39,7 @@ const LoginForm = () => {
         .
       </p>
 
-      <form className="flex flex-col gap-5">
+      <form onSubmit={(e)=> handleLogin(e)} className="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="login" className="text-sm font-semibold text-(--dark-gray-2)">
             Login *
@@ -69,7 +72,7 @@ const LoginForm = () => {
           Esqueci minha senha
         </Link>
 
-        <Button texto="Acessar Conta" onclick={(e)=> handleLogin(e)} />
+        <Button texto="Acessar Conta" />
       </form>
 
       <div className="flex flex-col items-center gap-4 mt-8">

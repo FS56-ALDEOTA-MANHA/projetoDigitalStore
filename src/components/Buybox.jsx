@@ -1,34 +1,46 @@
+import { useParams } from "react-router-dom"
 import Button from "./Button"
+import { useEffect, useState } from "react"
 
-const BuyBox = ({
-  name,
-  category = "Casual",
-  brand = "Nike",
-  reference,
-  rating = 4.7,
-  reviews = 90,
-  price,
-  priceDiscount,
-  description,
-  sizes = [39, 40, 41, 42, 43],
-  selectedSize = 41,
-  colors = ["#6ee7f9", "#ff6961", "#555555", "#6b6bcf"],
-  selectedColor = "#ff6961",
-  shipping = "Frete grátis",
-}) => {
+const BuyBox = () => {
+  const [produto, setProduto] = useState({})
+  const [selectedSize, setSelectedSize] = useState(0)
+  const [selectedColor, setSelectedColor] = useState(0)
+  const {id} = useParams()
+  console.log(id)
+
+  async function fetchData() {
+    try {
+      const response = await fetch(`http://localhost:3000/produtos/${id}`)
+      const dados = await response.json()
+      console.log(dados)
+      setProduto(dados)
+    } catch (error) {
+      console.error("Erro na requisição", error)
+    }
+  }
+
+  useEffect(()=> {
+    fetchData()
+  }, [])
+
   return (
-    <div className="max-w-xl flex flex-col gap-5">
-      <h1 className="text-[32px] leading-[36px] font-bold text-(--dark-gray)">
-        {name}
+    <div className="flex w-full gap-10 px-25 py-10">
+      <div className="w-1/2 flex items-center" style={{ backgroundColor: produto?.colors?.[selectedColor] }}>
+        <img src={produto.image} alt={produto.name} className="w-[80%]"/>
+      </div>
+    <div className="max-w-1/2 flex flex-col gap-5">
+      <h1 className="text-[32px] leading-9 font-bold text-(--dark-gray)">
+        {produto.name}
       </h1>
 
       <div className="flex items-center gap-2 text-[12px] text-(--dark-gray-3)">
         <span>
-          {category} | {brand}
+          {produto.category} | {produto.brand}
         </span>
 
         <span>
-          REF:{reference}
+          REF:{produto.reference}
         </span>
       </div>
 
@@ -38,28 +50,28 @@ const BuyBox = ({
         </div>
 
         <div className="bg-[#F6AA1C] px-2 py-1 rounded text-white text-sm font-bold">
-          {rating}
+          {produto.rating}
         </div>
 
         <span className="text-(--light-gray) text-sm">
-          ({reviews} avaliações)
+          ({produto.reviews} avaliações)
         </span>
       </div>
 
       <div className="flex items-end gap-3">
-        {priceDiscount ? (
+        {produto.priceDiscount ? (
           <>
             <span className="text-[16px] text-(--light-gray-2) line-through">
-              R$ {price}
+              R$ {produto.price}
             </span>
 
             <span className="text-[32px] font-bold text-(--dark-gray-2)">
-              R$ {priceDiscount}
+              R$ {produto.priceDiscount}
             </span>
           </>
         ) : (
           <span className="text-[32px] font-bold text-(--dark-gray-2)">
-            R$ {price}
+            R$ {produto.price}
           </span>
         )}
       </div>
@@ -70,7 +82,7 @@ const BuyBox = ({
         </h3>
 
         <p className="text-[14px] leading-6 text-(--dark-gray-2)">
-          {description}
+          {produto.description}
         </p>
       </div>
 
@@ -80,11 +92,12 @@ const BuyBox = ({
         </h3>
 
         <div className="flex gap-3">
-          {sizes.map((size) => (
+          {produto?.sizes?.map((size, index) => (
             <button
-              key={size}
+              onClick={()=> setSelectedSize(index)}
+              key={index}
               className={
-                size === selectedSize
+                index === selectedSize
                   ? "w-12 h-12 rounded border border-(--primary) bg-(--primary) text-white font-bold"
                   : "w-12 h-12 rounded border border-(--light-gray-2) bg-white text-(--dark-gray-2) font-bold"
               }
@@ -101,11 +114,12 @@ const BuyBox = ({
         </h3>
 
         <div className="flex gap-4">
-          {colors.map((color) => (
-            <div
-              key={color}
+          {produto?.colors?.map((color, index) => (
+            <button
+              onClick={()=> setSelectedColor(index)}
+              key={index}
               className={
-                color === selectedColor
+                index === selectedColor
                   ? "w-8 h-8 rounded-full ring-2 ring-(--primary) ring-offset-2"
                   : "w-8 h-8 rounded-full"
               }
@@ -118,12 +132,11 @@ const BuyBox = ({
       </div>
 
       <div className="text-sm text-(--dark-gray-3)">
-        {shipping}
+        {produto.shipping}
       </div>
 
-      <Button color="warning">
-        COMPRAR
-      </Button>
+      <Button color="warning" texto="comprar"/>
+    </div>
     </div>
   )
 }
